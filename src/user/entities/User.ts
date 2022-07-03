@@ -48,7 +48,7 @@ export class User {
     @Column({ type: "int",default: 0 })
     cupon_count: number;
 
-    @Column({ type: "datetime" })
+    @Column({ type: "datetime", nullable: true, })
     @CreateDateColumn()
     created_at: Date;
 

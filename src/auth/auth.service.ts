@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { sign } from 'jsonwebtoken';
-import { AdminService } from '../admin/admin.service';
+import { UserService } from '../user/services/user.service';
 import { AccessTokenPayload, RefreshTokenPayload } from './type/jwtPayload';
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly adminService: AdminService) { }
+    constructor(private readonly adminService: UserService) { }
 
     createAccessToken({ auth_key }: AccessTokenPayload): string {
         return sign({ auth_key }, process.env.ACCESS_TOKEN_SECRET, {

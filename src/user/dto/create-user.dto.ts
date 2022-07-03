@@ -13,5 +13,7 @@ export class CreateUserDto {
   readonly password_hash: string;
 
   @IsNotEmpty()
-  readonly generated_id: string;
+  readonly status : number;
+
+  
 }

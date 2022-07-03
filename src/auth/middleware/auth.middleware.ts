@@ -1,7 +1,7 @@
 import { verify } from 'jsonwebtoken';
 import { NestMiddleware, Injectable, ForbiddenException, UnauthorizedException } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { AdminService } from '../../admin/admin.service';
+import { UserService } from '../../user/services/user.service';
 
 /** The AuthMiddleware is used to
  * (1) read the request header bearer token/user access token
@@ -9,7 +9,7 @@ import { AdminService } from '../../admin/admin.service';
  */
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-    constructor(private readonly adminService: AdminService) { }
+    constructor(private readonly adminService: UserService) { }
 
     async use(req: Request | any, res: Response, next: () => void) {
         const bearerHeader = req.headers.authorization;
