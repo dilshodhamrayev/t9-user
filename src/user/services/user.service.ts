@@ -26,6 +26,9 @@ export class UserService {
     }
 
     async createAdmin(adminDto:any): Promise<User> {
+      const d = new Date();
+      let time = d.getTime();
+
       var region = await this.regionRepository.findOne({where:{id:adminDto.region_id}})
 
       var user = new User();
@@ -36,7 +39,7 @@ export class UserService {
         user.password_hash = adminDto.password_hash;
         user.auth_key = adminDto.auth_key;
         user.regionjon = region;
-        user.generated_id = adminDto.generated_id;
+        user.generated_id = time + "0";
         user.birthday = adminDto.birthday;
       }
       
