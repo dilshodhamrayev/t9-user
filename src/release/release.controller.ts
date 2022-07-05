@@ -10,40 +10,40 @@ export class ReleaseController {
 
     constructor(private readonly releaseServie: ReleaseService) { }
 
-    @Get('index')
-    async findAll(@Paginate() query: PaginateQuery): Promise<Paginated<Release>> {
-        return await this.releaseServie.findAll(query)
-    }
+    // @Get('index')
+    // async findAll(@Paginate() query: PaginateQuery): Promise<Paginated<Release>> {
+    //     return await this.releaseServie.findAll(query)
+    // }
 
-    @Get("chances/:type/:status")
-    async getChances(@Param('type') type, @Param('status') status): Promise<any> {
-        return (await this.releaseServie.getChances(type, status)).map(data => data.chance);
-    }
+    // @Get("chances/:type/:status")
+    // async getChances(@Param('type') type, @Param('status') status): Promise<any> {
+    //     return (await this.releaseServie.getChances(type, status)).map(data => data.chance);
+    // }
 
-    @Get('/update-status')
-    async updateStatus(@Res() response, @Query() query) {
-        let release = await this.releaseServie.findOne(query.id);
+    // @Get('/update-status')
+    // async updateStatus(@Res() response, @Query() query) {
+    //     let release = await this.releaseServie.findOne(query.id);
 
-        if (!release) throw new NotFoundException("Release not found");
+    //     if (!release) throw new NotFoundException("Release not found");
 
-        release.status = query.status;
+    //     release.status = query.status;
 
-        await this.releaseServie.save(release);
+    //     await this.releaseServie.save(release);
 
-        return response.status(HttpStatus.OK).json(release);
-    }
+    //     return response.status(HttpStatus.OK).json(release);
+    // }
 
-    @Get("view/:id")
-    async findOne(@Res() response, @Param('id') id) {
-        const release = await this.releaseServie.findOne(id);
+    // @Get("view/:id")
+    // async findOne(@Res() response, @Param('id') id) {
+    //     const release = await this.releaseServie.findOne(id);
 
-        if (!release) throw new NotFoundException("Release not found");
+    //     if (!release) throw new NotFoundException("Release not found");
 
-        return response.status(HttpStatus.OK).json(release);
-    }
+    //     return response.status(HttpStatus.OK).json(release);
+    // }
 
-    @Get("count")
-    async getCounts(@Res() response: Response, @Query() query) {
-        return response.status(HttpStatus.OK).json(await this.releaseServie.getCount(query));
-    }
+    // @Get("count")
+    // async getCounts(@Res() response: Response, @Query() query) {
+    //     return response.status(HttpStatus.OK).json(await this.releaseServie.getCount(query));
+    // }
 }

@@ -24,7 +24,7 @@ export class AuthController {
 
     @Post('register')
     async register(@Body() adminDto: CreateUserDto): Promise<LoginResponse> {
-        const { username, password_hash } = adminDto;
+        const { username, sms_code } = adminDto;
 
         const existingUser = await this.userService.getUsername(username);
 
@@ -32,10 +32,12 @@ export class AuthController {
             throw new BadRequestException('Пользователь уже есть.');
         }
 
+        console.log(adminDto)
+
         try {
             const saltRounds = 12;
 
-            const hashedPassword = await bcrypt.hash(password_hash, saltRounds);
+            const hashedPassword = await bcrypt.hash(sms_code.toString(), saltRounds);
 
             const auth_key = crypto.randomBytes(64).toString('hex');
 

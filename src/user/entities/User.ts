@@ -73,12 +73,16 @@ export class User {
     // @Column({ type: "varchar", length: 255, nullable: true, })
     // region_id: string;
     
-    @Column({ type: "varchar", length: 255, nullable: true, })
-    region_child_id: string;
+    // @Column({ type: "varchar", length: 255, nullable: true, })
+    // region_child_id: string;
 
     @ManyToOne(() => Region, regionjon => regionjon.users, { nullable: false, onDelete: "RESTRICT", onUpdate: "CASCADE" })
     @JoinColumn({ name: "region_id", referencedColumnName: "id" })
     regionjon: Region;
+
+    @ManyToOne(() => Region, regionchild => regionchild.users2, { nullable: false, onDelete: "RESTRICT", onUpdate: "CASCADE" })
+    @JoinColumn({ name: "region_child_id", referencedColumnName: "id" })
+    regionchild: Region;
 
     @OneToMany(() => Sticker, sticker => sticker.user)
     stickers: Sticker[]

@@ -44,6 +44,9 @@ export class Region {
     @OneToMany(() => User, user => user.regionjon)
     users: User[]
 
+    @OneToMany(() => User, user => user.regionchild)
+    users2: User[]
+
     @OneToMany(() => Company, company => company.region)
     companies: Company[];
     

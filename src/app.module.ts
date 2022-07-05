@@ -63,6 +63,6 @@ export class AppModule {
             //     { path: 'sticker', method: RequestMethod.GET },
             //     'sticker/(.*)',
             // )
-            .forRoutes(CategoryController, BrandController, CompanyController, ProductController, StickerController, PrizeController, RegionController, ReleaseController);
+            .forRoutes(CategoryController, BrandController, CompanyController, ProductController, StickerController, PrizeController, ReleaseController);
     }
 }

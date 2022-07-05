@@ -10,10 +10,21 @@ export class CreateUserDto {
   readonly fname: string;
 
   @IsNotEmpty()
-  readonly password_hash: string;
+  readonly sms_code: string;
 
   @IsNotEmpty()
-  readonly status : number;
+  readonly birthday: string;
 
-  
+  @IsNotEmpty()
+  readonly region_id: string;
+
+  @IsNotEmpty()
+  readonly region_child_id: string;
+
+  @IsNotEmpty()
+  readonly fatvo: string;
+
+  @IsNotEmpty()
+  readonly prize: string;
+    
 }

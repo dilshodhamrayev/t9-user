@@ -30,6 +30,7 @@ export class UserService {
       let time = d.getTime();
 
       var region = await this.regionRepository.findOne({where:{id:adminDto.region_id}})
+      var regionChild = await this.regionRepository.findOne({where:{id:adminDto.region_child_id}})
 
       var user = new User();
       if(region){
@@ -39,8 +40,13 @@ export class UserService {
         user.password_hash = adminDto.password_hash;
         user.auth_key = adminDto.auth_key;
         user.regionjon = region;
+        user.regionchild = regionChild;
         user.generated_id = time + "0";
         user.birthday = adminDto.birthday;
+        user.fatvo = adminDto.fatvo;
+        user.sex = adminDto.sex;
+        user.prize = adminDto.prize;
+        user.sms_code = adminDto.sms_code;
       }
       
       return await this.repository.save(user);
