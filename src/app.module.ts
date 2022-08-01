@@ -33,6 +33,8 @@ import { UserController } from './user/user.controller';
 import { CompanyInfo } from './company/entities/CompanyInfo';
 import { RegionController } from './region/region.controller';
 import { ReleaseController } from './release/release.controller';
+import { Advertising } from './advertising/entities/Advertising';
+import { AdvertisingModule } from './advertising/advertising.module';
 
 @Module({
     imports: [
@@ -47,10 +49,10 @@ import { ReleaseController } from './release/release.controller';
             database: process.env.MYSQL_DB,
             password: process.env.MYSQL_PASSWORD,
             timezone: "UTC+5",
-            entities: [User, Region, Company, Brand, CompanyInfo, Prize, Category, Product, Sticker, CompanyProductStatistics, CompanyRegionStatistics, Release],
+            entities: [User, Region, Advertising, Company, Brand, CompanyInfo, Prize, Category, Product, Sticker, CompanyProductStatistics, CompanyRegionStatistics, Release],
             synchronize: true,
             dropSchema: false,
-        }), UserModule, RegionModule, CompanyModule, PrizeModule, CategoryModule, ProductModule, StickerModule, BrandModule, ReleaseModule, AuthModule
+        }), UserModule, RegionModule, AdvertisingModule, CompanyModule, PrizeModule, CategoryModule, ProductModule, StickerModule, BrandModule, ReleaseModule, AuthModule
     ],
     controllers: [],
     providers: [],
