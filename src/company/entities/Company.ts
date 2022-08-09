@@ -8,6 +8,7 @@ import { CompanyProductStatistics } from "./CompanyProductStatistics";
 import { CompanyRegionStatistics } from "./CompanyRegionStatistics";
 import { CompanyInfo } from "./CompanyInfo";
 import { Release } from "../../release/entities/Release";
+import { AdvertisingConnect } from "../../advertising_connect/entities/AdvertisingConnect";
 
 @Entity()
 export class Company {
@@ -69,6 +70,9 @@ export class Company {
 
     @OneToMany(() => Brand, brand => brand.company)
     brands: Brand[];
+
+    @OneToMany(() => AdvertisingConnect, advertising_connect => advertising_connect.company)
+    advertising_connect: AdvertisingConnect[];
 
     @OneToMany(() => CompanyProductStatistics, companyProductStatistics => companyProductStatistics.company)
     companyProductStatistics: CompanyProductStatistics;

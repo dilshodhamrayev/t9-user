@@ -3,10 +3,8 @@ import { InjectConnection, InjectRepository } from "@nestjs/typeorm";
 import { Connection } from "mysql2";
 import { FilterOperator, paginate, Paginated, PaginateQuery } from "nestjs-paginate";
 import { Repository } from "typeorm";
-import { Brand } from "../../brand/entities/Brand";
-import { Product } from "../../product/entities/Product";
-import { AdvertisingDto } from "../dto/advertising.dto";
 import { Advertising } from "../entities/Advertising";
+import { PLACES, STATUSES, TYPES } from "../types";
 
 @Injectable()
 export class AdvertisingService {
@@ -15,42 +13,19 @@ export class AdvertisingService {
         @InjectConnection() private readonly connection: Connection
     ) { }
 
-    findAll(query: PaginateQuery): Promise<Paginated<Advertising>> {
-        return paginate(query, this.advertisingRepository, {
-            sortableColumns: ['id'],
-            searchableColumns: ['id'],
-            defaultSortBy: [
-                ['id', 'DESC']
-            ],
-            // filterableColumns: {
-            //     title_ru: [FilterOperator.GTE, FilterOperator.LTE],
-            // },
-        });
-    }
-
-
-    findAllList(): Promise<Advertising[]> {
-        return this.advertisingRepository.find({});
-    }
-
-    
-
-    
-
-
-    findOne(id: number) {
-        return this.advertisingRepository.findOne({
-            select: ['id'],
-            where: {
-                id
-            },
+    // findOne(id: number) {
+    //     return this.advertisingRepository.findOne({
+    //         select: ['id'],
+    //         where: {
+    //             id
+    //         },
             
-        });
-    }
+    //     });
+    // }
 
-    async delete(id: number) {
-        return await this.connection.query(`DELETE FROM advertising WHERE id=${id}`);
-    }
+    // async delete(id: number) {
+    //     return await this.connection.query(`DELETE FROM advertising WHERE id=${id}`);
+    // }
 
     // async createCategory(category: CategoryDto): Promise<Category> {
     //     let parent = null

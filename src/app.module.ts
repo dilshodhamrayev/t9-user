@@ -38,6 +38,8 @@ import { AdvertisingModule } from './advertising/advertising.module';
 import { Settings } from './settings/entities/Settings';
 import { SettingsModule } from './settings/settings.module';
 import { SettingsController } from './settings/settings.controller';
+import { AdvertisingConnect } from './advertising_connect/entities/AdvertisingConnect';
+import { AdvertisingConnectModule } from './advertising_connect/advertisingConnect.module';
 
 @Module({
     imports: [
@@ -52,10 +54,10 @@ import { SettingsController } from './settings/settings.controller';
             database: process.env.MYSQL_DB,
             password: process.env.MYSQL_PASSWORD,
             timezone: "UTC+5",
-            entities: [User, Region, Settings, Advertising, Company, Brand, CompanyInfo, Prize, Category, Product, Sticker, CompanyProductStatistics, CompanyRegionStatistics, Release],
+            entities: [User, Region, Settings, Advertising, AdvertisingConnect, Company, Brand, CompanyInfo, Prize, Category, Product, Sticker, CompanyProductStatistics, CompanyRegionStatistics, Release],
             synchronize: true,
             dropSchema: false,
-        }), UserModule, RegionModule, SettingsModule, AdvertisingModule, CompanyModule, PrizeModule, CategoryModule, ProductModule, StickerModule, BrandModule, ReleaseModule, AuthModule
+        }), UserModule, RegionModule, SettingsModule, AdvertisingModule, AdvertisingConnectModule, CompanyModule, PrizeModule, CategoryModule, ProductModule, StickerModule, BrandModule, ReleaseModule, AuthModule
     ],
     controllers: [],
     providers: [],

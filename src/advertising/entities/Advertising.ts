@@ -1,3 +1,4 @@
+import { AdvertisingConnect } from "../../advertising_connect/entities/AdvertisingConnect";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -5,29 +6,38 @@ export class Advertising {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({ type: "float", default: 0 })
+    price: number;
+
     @Column({ type: "int", default: 0 })
     place: number;
     
     @Column({ type: "enum", enum: [1, 2] })
     type: 1 | 2;
 
-    @Column({ type: "varchar", length: 250 })
-    fayl: string;
-
     @Column({ type: "int", default: 0 })
-    views?: number;
+    status: number;
 
-    @Column({ type: "int", default: 0 })
-    likes?: number;
+    @OneToMany(() => AdvertisingConnect, advertising_connect => advertising_connect.advertising)
+    advertising_connect: AdvertisingConnect[];
 
-    @Column({ type: "date", nullable: true})
-    created_at: string;
+    // @Column({ type: "varchar", length: 250 })
+    // fayl: string;
 
-    @Column({ type: "date", nullable: true})
-    begin_date: string;
+    // @Column({ type: "int", default: 0 })
+    // views?: number;
+
+    // @Column({ type: "int", default: 0 })
+    // likes?: number;
+
+    // @Column({ type: "date", nullable: true})
+    // created_at: string;
+
+    // @Column({ type: "date", nullable: true})
+    // begin_date: string;
     
-    @Column({ type: "date", nullable: true})
-    end_date: string;
+    // @Column({ type: "date", nullable: true})
+    // end_date: string;
 
     // @Column({ type: "varchar", length: 50 })
     // title_ru: string;
